@@ -1,21 +1,56 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Login.css'
 import logo from '../../assets/logo.png'
+import {auth, login, signup} from '../../firebase'
+import { useNavigate } from 'react-router-dom';     
+import { onAuthStateChanged } from 'firebase/auth';
 
 function Login() {
 
-  const [signState, setSignState] = useState("Sign In")
+  const navigate = useNavigate();    
 
+  const [signState, setSignState] = useState("Sign In")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {                                           
+      const unsub = onAuthStateChanged(auth, (user) => {
+        if (user) navigate('/', { replace: true })            
+      })
+      return () => unsub()
+    }, [navigate])
+
+ const user_auth = async (event) => {
+    event.preventDefault()
+    try {                                                    
+      if (signState === 'Sign In') {
+        await login(email, password)
+        toast.success("Logged in successfully!") 
+      } 
+      else {
+        await signup(name, email, password)
+        toast.success("Account created successfully!") 
+      }                       
+    } catch (err) {
+      toast.error(err.message) 
+      console.error(err)
+    }
+  }
   return (
     <div className='login'>
       <img src={logo} className='login-logo' alt="" />
       <div className='login-form'>
         <h1>{signState}</h1>
-        <form>
-          {signState === "Sign Up" ? <input type="text" placeholder='Your name' /> : <></>}
-          <input type="email" placeholder='Email' />
-          <input type="password" placeholder='Password' />
-          <button>{signState}</button>
+        <form onSubmit={user_auth}>
+          {signState === "Sign Up" ?
+          <input value={name} onChange={(event) => {setName(event.target.value)}} 
+            type="text" placeholder='Your name' /> : <></>}
+          <input value={email} onChange={(event) => {setEmail(event.target.value)}} 
+          type="email" placeholder='Email' />
+          <input value={password} onChange={(event) => {setPassword(event.target.value)}}
+          type="password" placeholder='Password' />
+          <button type='submit'>{signState}</button>
           <div className="form-help">
             <div className="remember">
               <input type="checkbox" />
