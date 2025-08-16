@@ -18,11 +18,9 @@ const App = () => {
       setUser(currentUser);
       
       if(currentUser) {
-        // Only navigate to home if we're currently on the login page
         if (window.location.pathname === '/login') {
           navigate('/');
         }
-        // Don't navigate if we're already on a valid route like /player/:id
       } else {
         navigate('/login');
       }

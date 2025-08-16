@@ -4,7 +4,7 @@ import logo from '../../assets/logo.png'
 import {auth, login, signup} from '../../firebase'
 import { useNavigate } from 'react-router-dom';     
 import { onAuthStateChanged } from 'firebase/auth';
-import netflix_spinner from '../../assets/netflix_spinner.gif';
+import netflix__spinner from '../../assets/netflix__spinner.gif';
 import { toast } from 'react-toastify';
 
 function Login() {
@@ -24,7 +24,7 @@ function Login() {
       return () => unsub()
     }, [navigate])
 
- const user_auth = async (event) => {
+ const user__auth = async (event) => {
     event.preventDefault()
     setLoading(true);
     try {                                                    
@@ -46,15 +46,15 @@ function Login() {
   
   return (
       loading ? (
-        <div className="login-spinner">
-          <img src={netflix_spinner} alt="Loading..." />
+        <div className="login__spinner">
+          <img src={netflix__spinner} alt="Loading..." />
         </div>
       ) : (
       <div className='login'>
-        <img src={logo} className='login-logo' alt="" />
-        <div className='login-form'>
+        <img src={logo} className='login__logo' alt="" />
+        <div className='login__form'>
           <h1>{signState}</h1>
-          <form onSubmit={user_auth}>
+          <form onSubmit={user__auth}>
             {signState === "Sign Up" ?
             <input value={name} onChange={(event) => {setName(event.target.value)}} 
               type="text" placeholder='Your name' /> : <></>}
@@ -63,7 +63,7 @@ function Login() {
             <input value={password} onChange={(event) => {setPassword(event.target.value)}}
             type="password" placeholder='Password' />
             <button type='submit'>{signState}</button>
-            <div className="form-help">
+            <div className="form__help">
               <div className="remember">
                 <input type="checkbox" />
                 <label htmlFor="">Remember Me</label>
@@ -71,7 +71,7 @@ function Login() {
               <p>Need Help?</p>
             </div>
           </form>
-          <div className="form-switch">
+          <div className="form__switch">
             {signState === "Sign In" ? <p>New to Netflix <span onClick={() => {setSignState("Sign Up")}}>Sign Up Now</span></p> 
             : 
             <p>Already have account? <span onClick={() => {setSignState("Sign In")}}>Sign In Now</span></p> }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './MovieDetails.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import back_arrow_icon from '../../assets/back_arrow_icon.png';
-import play_icon from '../../assets/play_icon.png';
+import back__arrow__icon from '../../assets/back__arrow__icon.png';
+import play__icon from '../../assets/play__icon.png';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -47,21 +47,21 @@ const MovieDetails = () => {
 
   if (loading) {
     return (
-      <div className="movie-details loading">
-        <img src={back_arrow_icon} alt="Back" onClick={() => navigate(-1)} className="back-arrow" />
-        <div className="loading-text">Loading movie details...</div>
+      <div className="movie__details loading">
+        <img src={back__arrow__icon} alt="Back" onClick={() => navigate(-1)} className="back__arrow" />
+        <div className="loading__text">Loading movie details...</div>
       </div>
     );
   }
 
   if (error || !movie) {
     return (
-      <div className="movie-details error">
-        <img src={back_arrow_icon} alt="Back" onClick={() => navigate(-1)} className="back-arrow" />
-        <div className="error-content">
+      <div className="movie__details error">
+        <img src={back__arrow__icon} alt="Back" onClick={() => navigate(-1)} className="back__arrow" />
+        <div className="error__content">
           <h2>Movie not found</h2>
           <p>Sorry, we couldn't load the movie details.</p>
-          <button onClick={() => navigate(-1)} className="go-back-btn">Go Back</button>
+          <button onClick={() => navigate(-1)} className="go__back-btn">Go Back</button>
         </div>
       </div>
     );
@@ -78,14 +78,14 @@ const MovieDetails = () => {
   };
 
   return (
-    <div className="movie-details">
-      <img src={back_arrow_icon} alt="Back" onClick={() => navigate(-1)} className="back-arrow" />
+    <div className="movie__details">
+      <img src={back__arrow__icon} alt="Back" onClick={() => navigate(-1)} className="back__arrow" />
       
-      <div className="movie-hero" style={{
+      <div className="movie__hero" style={{
         backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
       }}>
-        <div className="movie-content">
-          <div className="movie-poster">
+        <div className="movie__content">
+          <div className="movie__poster">
             <img 
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
               alt={movie.title}
@@ -95,71 +95,71 @@ const MovieDetails = () => {
             />
           </div>
           
-          <div className="movie-info">
-            <h1 className="movie-title">{movie.title}</h1>
+          <div className="movie__info">
+            <h1 className="movie__title">{movie.title}</h1>
             
-            <div className="movie-meta">
+            <div className="movie__meta">
               <span className="rating">⭐ {formatRating(movie.vote_average)}</span>
               <span className="year">{new Date(movie.release_date).getFullYear()}</span>
               <span className="runtime">{formatRuntime(movie.runtime)}</span>
-              <span className="rating-badge">{movie.adult ? '18+' : 'PG-13'}</span>
+              <span className="rating__badge">{movie.adult ? '18+' : 'PG-13'}</span>
             </div>
 
             <div className="genres">
               {movie.genres?.map(genre => (
-                <span key={genre.id} className="genre-tag">{genre.name}</span>
+                <span key={genre.id} className="genre__tag">{genre.name}</span>
               ))}
             </div>
 
-            <p className="movie-overview">{movie.overview}</p>
+            <p className="movie__overview">{movie.overview}</p>
 
-            <div className="action-buttons">
+            <div className="action__buttons">
               <button 
-                className="play-btn"
+                className="play__btn"
                 onClick={() => navigate(`/player/${id}`)}
               >
-                <img src={play_icon} alt="Play" />
+                <img src={play__icon} alt="Play" />
                 Play Trailer
               </button>
-              <button className="wishlist-btn">+ My List</button>
+              <button className="wishlist__btn">+ My List</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="movie-details-content">
-        <div className="cast-section">
+      <div className="movie__details--content">
+        <div className="cast__section">
           <h3>Cast</h3>
-          <div className="cast-grid">
+          <div className="cast__grid">
             {cast.map(actor => (
-              <div key={actor.id} className="cast-card">
+              <div key={actor.id} className="cast__card">
                 <img 
                   src={actor.profile_path ? `https://image.tmdb.org/t/p/w200${actor.profile_path}` : `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="300" viewBox="0 0 200 300"><rect width="100%" height="100%" fill="#333"/><text x="50%" y="50%" fill="white" text-anchor="middle" dy=".3em" font-family="Arial" font-size="16">No Image</text></svg>')}`} 
                   alt={actor.name}
                 />
-                <div className="cast-info">
-                  <p className="actor-name">{actor.name}</p>
-                  <p className="character-name">{actor.character}</p>
+                <div className="cast__info">
+                  <p className="actor__name">{actor.name}</p>
+                  <p className="character__name">{actor.character}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="movie-stats">
-          <div className="stat-item">
+        <div className="movie__stats">
+          <div className="stat__item">
             <h4>Director</h4>
             <p>{movie.production_companies?.[0]?.name || 'Unknown'}</p>
           </div>
-          <div className="stat-item">
+          <div className="stat__item">
             <h4>Budget</h4>
             <p>{movie.budget ? `$${(movie.budget / 1000000).toFixed(1)}M` : 'Unknown'}</p>
           </div>
-          <div className="stat-item">
+          <div className="stat__item">
             <h4>Revenue</h4>
             <p>{movie.revenue ? `$${(movie.revenue / 1000000).toFixed(1)}M` : 'Unknown'}</p>
           </div>
-          <div className="stat-item">
+          <div className="stat__item">
             <h4>Language</h4>
             <p>{movie.original_language?.toUpperCase()}</p>
           </div>

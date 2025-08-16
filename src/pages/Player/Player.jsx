@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Player.css'
-import back_arrow_icon from '../../assets/back_arrow_icon.png'
+import back__arrow__icon from '../../assets/back__arrow__icon.png'
 import { useNavigate, useParams } from 'react-router-dom'
 
 function Player() {
@@ -33,7 +33,6 @@ function Player() {
       console.log(`Videos for movie ${id}:`, res);
       
       if (res.results && res.results.length > 0) {
-        // Find the best video: YouTube Trailer > YouTube Teaser > Any YouTube video > First video
         const bestVideo = 
           res.results.find(video => video.site === 'YouTube' && video.type === 'Trailer') ||
           res.results.find(video => video.site === 'YouTube' && video.type === 'Teaser') ||
@@ -65,7 +64,7 @@ function Player() {
   if (loading) {
     return (
       <div className='player'>
-        <img src={back_arrow_icon} alt="" onClick={() => {navigate(-1)}} />
+        <img src={back__arrow__icon} alt="" onClick={() => {navigate(-1)}} />
         <div style={{color: 'white', textAlign: 'center', fontSize: '24px'}}>
           Loading trailer...
         </div>
@@ -101,7 +100,7 @@ function Player() {
   
   return (
     <div className='player'>
-      <img src={back_arrow_icon} alt="" onClick={() => {navigate(-1)}} />
+      <img src={back__arrow__icon} alt="" onClick={() => {navigate(-1)}} />
       <iframe 
         width='90%' 
         height='90%'
@@ -110,7 +109,7 @@ function Player() {
         frameBorder='0' 
         allowFullScreen
       ></iframe>
-      <div className="player-info">
+      <div className="player__info">
         <p>{apiData.published_at ? apiData.published_at.slice(0,10) : 'Date not available'}</p>
         <p>{apiData.name || 'Title not available'}</p>
         <p>{apiData.type || 'Type not available'}</p>
