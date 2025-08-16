@@ -35,9 +35,8 @@ const signup = async (name, email, password) => {
         );  
     } catch (error) {
         console.log(error);
-        toast.error(error.code);
-        
-    }
+        toast.error(error.code.split('/')[1].split('-').join(" "));
+    } throw error;
 }
 
 const login = async (email, password) => {
@@ -45,8 +44,8 @@ const login = async (email, password) => {
         await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
         console.log(error);
-        toast.error(error.code);
-    }
+        toast.error(error.code.split('/')[1].split('-').join(" "));
+    } throw error;
 }
 
 const logout = () => {
