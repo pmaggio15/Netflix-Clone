@@ -1,102 +1,170 @@
 .navbar {
-    width: 100%;
-    padding: 20px 6%;
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    font-size: 14px;
-    color: #e5e5e5;
-    background-image: linear-gradient(180deg, rgba(0,0,0,0.7) 10%, transparent);
-    z-index: 1;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    
-}
-
-.navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-.navbar-left img {
-    width: 90px;
-}
-
-.navbar-left ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-.navbar-left ul li {
-    cursor: pointer;
-}
-
-.navbar-right {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-.navbar-right .icons {
-    width: 20px;
-    cursor: pointer;
-}
-
-.navbar-right .profile {
-    border-radius: 4px;
-    width: 35px;
-}
-
-.navbar-profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    position: relative;
-}
-
-.navbar .dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: max-content;
-    background: #191919;
-    pad: 18px 22px;
-    border-radius: 2px;
-    text-decoration: underline;
-    z-index: 1;
-    display: none;
-}
-
-.navbar .dropdown p{
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.navbar-profile:hover .dropdown{
-    display: block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 20px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
+  transition: all 0.5s;
+  font-size: 14px;
+  color: #e5e5e5;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .nav-dark {
-    background-color: #141414;
+  background: #141414;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.navbar-left img {
+  width: 150px;
+  cursor: pointer;
+}
+
+.navbar-left ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  color: #e5e5e5;
+  font-size: 14px;
+}
+
+.navbar-left ul li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navbar-left ul li:hover {
+  color: #b3b3b3;
+}
+
+.navbar-left ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  color: #e5e5e5;
+  font-size: 14px;
+}
+
+.icons {
+  width: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.icons:hover {
+  opacity: 0.7;
+}
+
+.navbar-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.profile {
+  width: 35px;
+  border-radius: 4px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: max-content;
+  background: #191919;
+  padding: 18px 22px;
+  border-radius: 4px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 13px;
+  z-index: 1;
+  display: none;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-profile:hover .dropdown {
+  display: block;
+}
+
+.dropdown p {
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 13px;
+}
+
+.dropdown p:hover {
+  text-decoration: underline;
+  color: #b3b3b3;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .navbar-left ul {
+    display: none;
+  }
+  
+  .navbar-left {
+    gap: 20px;
+  }
+  
+  .navbar-right {
+    gap: 15px;
+  }
 }
 
 @media (max-width: 800px) {
-    .navbar{
-        padding: 20px, 4%;
-    }
-    .navbar-left ul{
-        display: none;
-    }
-    .navbar img{
-        height: 25px;
-    }
+  .navbar {
+    padding: 20px 4%;
+  }
+  
+  .navbar-left img {
+    width: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 15px 4%;
+  }
+  
+  .navbar-left img {
+    width: 100px;
+  }
+  
+  .navbar-right {
+    gap: 10px;
+  }
+  
+  .navbar-right p {
+    display: none;
+  }
 }
 
 @media (max-width: 500px) {
-    .navbar img {
-        height: 20px;
-    }
-    .navbar-right {
-        gap: 10px;
-    }
+  .navbar-left img {
+    width: 90px;
+  }
+  
+  .navbar-right {
+    gap: 10px;
+  }
 }

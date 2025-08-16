@@ -4,6 +4,7 @@ import cards_data from '../../assets/Cards/cards_data.js'
 import {Link} from 'react-router-dom'
 
 
+
 const TitleCards = ({title, category}) => {
 
   const [apiData, setApiData] = useState([]);
@@ -13,7 +14,7 @@ const TitleCards = ({title, category}) => {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNDVmOGM3ZGI3NjU3MGI0Mzc3OWMzODQwYjRkMmU3YSIsIm5iZiI6MTc1MzY2MTY1Mi4wMzEwMDAxLCJzdWIiOiI2ODg2YzBkNDYzMDkyMjJmZWU3MmVmNjEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.QQRVmExWaXGMHoX2-ZHMEZT8bLagHvSn1SqXNGS5GU8'
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYWQ2MjIyOTFkNzZlN2I0YTAzNjdiM2EwYjlhOGNkOCIsIm5iZiI6MTc1MzY2MTY1Mi4wMzEwMDAxLCJzdWIiOiI2ODg2YzBkNDYzMDkyMjJmZWU3MmVmNjEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.1pCsTA6nZUp4MANhYAGX8UeT3mwvUFbm1gz6Cky4SrY'
     }
   };
 
@@ -40,7 +41,7 @@ const TitleCards = ({title, category}) => {
       <h2>{title ? title : "Popular on Netflix"}</h2>
       <div className="card-list" ref={cardsRef}>
         {apiData.map((card, index) => {
-          return <Link to={`/player/${card.id}`} className="card" key={index}>
+          return <Link to={`/movie/${card.id}`} className="card" key={index}>
             <img src={`https://image.tmdb.org/t/p/w500` +card.backdrop_path} alt="" />
             <p>{card.original_title}</p>
           </Link>

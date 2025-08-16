@@ -3,9 +3,10 @@ import Home from './pages/Home/Home'
 import {Routes, Route, useNavigate} from 'react-router-dom'
 import Login from './pages/Login/Login'
 import Player from './pages/Player/Player'
+import MovieDetails from './pages/MovieDetails/MovieDetails'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 
 const App = () => {
@@ -17,7 +18,11 @@ const App = () => {
       setUser(currentUser);
       
       if(currentUser) {
-        navigate('/');
+        // Only navigate to home if we're currently on the login page
+        if (window.location.pathname === '/login') {
+          navigate('/');
+        }
+        // Don't navigate if we're already on a valid route like /player/:id
       } else {
         navigate('/login');
       }
@@ -47,6 +52,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>
+          <Route path='/movie/:id' element={<MovieDetails />}/>
           <Route path='/player/:id' element={<Player />}/>
         </Routes>
       )}

@@ -4,7 +4,8 @@ import logo from '../../assets/logo.png'
 import {auth, login, signup} from '../../firebase'
 import { useNavigate } from 'react-router-dom';     
 import { onAuthStateChanged } from 'firebase/auth';
-import netflix_spinner from '../../assets/netflix_spinner.gif'
+import netflix_spinner from '../../assets/netflix_spinner.gif';
+import { toast } from 'react-toastify';
 
 function Login() {
 
