@@ -15,14 +15,21 @@ const Footer = () => {
         <img src={facebook__icon} alt="" />
       </div>
       <ul>
-        <li>Help Center</li>
-        <li>Media Center</li>
-        <li>investor Relations</li>
-        <li>Jobs</li>
-        <li>Terms of Use</li>
+        <li>Audio Description</li>
+        <li>Investor Releations</li>
         <li>Privacy</li>
-        <li>Legal Notices</li>
         <li>Contact Us</li>
+        <li>Help Center</li>
+        <li>Jobs</li>
+        <li>Legal Notices</li>
+        <li>Do Not Sell or Share My Personal Information</li>
+        <li>Gift Cards</li>
+        <li>Netflix Shop</li>
+        <li>Cookie Preferences</li>
+        <li>Ad Choices</li>
+        <li>Media Center</li>
+        <li>Terms of Use</li>
+        <li>Corporate Information</li>
       </ul>
       <p className='copyright__text'>© 1997-2025 Netflix, Inc.</p>
     </div>

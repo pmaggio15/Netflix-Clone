@@ -3,11 +3,14 @@ import {
     createUserWithEmailAndPassword, 
     getAuth, 
     signInWithEmailAndPassword,
-    signOut} from 'firebase/auth';
+    signOut,        // ← Added missing comma here
+    updateProfile   // ← Now this is properly imported
+} from 'firebase/auth';
 import {    
     setDoc,
     doc,
-    getFirestore } from "firebase/firestore";
+    getFirestore 
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyASDWP6x01DEdAv0t_tr8lC2bxdW5fl3FM",
@@ -26,9 +29,22 @@ const signup = async (name, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
+        
+        // Update the user's display name
+        await updateProfile(user, {
+            displayName: name
+        });
+        
+        // Save to Firestore
         await setDoc(                                          
             doc(db, "users", user.uid),
-            { uid: user.uid, name, authProvider: "local", email }
+            { 
+                uid: user.uid, 
+                name: name, 
+                authProvider: "local", 
+                email: email,
+                createdAt: new Date()
+            }
         );  
     } catch (error) {
         console.log(error);

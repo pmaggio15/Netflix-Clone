@@ -17,7 +17,8 @@
 .caption__img {
     width: 90%;
     max-width: 420px;
-    margin-bottom: 30px;
+    margin-bottom: -200px;
+   
 }
 .hero__caption p{
     max-width: 600px;
@@ -46,17 +47,19 @@
     background-color: white;
     border-radius: 4px;
     cursor: pointer;
+    
 }
 
-.hero__btns .btn.dark-btn {
+.hero__btns .btn.dark__btn {
     color: #fff;
-    background-color: #6d6d6eb3 ;
+    background-color: #6d6d6eb3;
+  
 }
 
 .hero__btns .btn:hover {
     background-color: #ffffffbf;
 }
-.hero__btns .btn.dark-btn:hover {
+.hero__btns .btn.dark__btn:hover {
     background-color: #6d6d6e66;
 }
 

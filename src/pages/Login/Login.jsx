@@ -30,11 +30,9 @@ function Login() {
     try {                                                    
       if (signState === 'Sign In') {
         await login(email, password)
-        toast.success("Logged in successfully!") 
       } 
       else {
         await signup(name, email, password)
-        toast.success("Account created successfully!") 
       }                      
     } catch (err) {
       toast.error(err.message) 
